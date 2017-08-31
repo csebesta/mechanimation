@@ -1,0 +1,62 @@
+"""def newrange():
+    OldRange = (OldMax - OldMin)  
+    NewRange = (NewMax - NewMin)  
+    NewValue = (((OldValue - OldMin) * NewRange) / OldRange) + NewMin"""
+
+"""def newrange():
+    OldMax = 90
+    OldMin = -90
+    NewMax = 225
+    NewMin = 75
+    OldRange = (OldMax - OldMin)  
+    NewRange = (NewMax - NewMin)  
+    NewValue = (((OldValue - OldMin) * NewRange) / OldRange) + NewMin
+    print NewValue"""
+
+def remap( x, oMin, oMax, nMin, nMax ):
+
+    #range check
+    if oMin == oMax:
+        print "Warning: Zero input range"
+        return None
+
+    if nMin == nMax:
+        print "Warning: Zero output range"
+        return None
+
+    #check reversed input range
+    reverseInput = False
+    oldMin = min( oMin, oMax )
+    oldMax = max( oMin, oMax )
+    if not oldMin == oMin:
+        reverseInput = True
+
+    #check reversed output range
+    reverseOutput = False   
+    newMin = min( nMin, nMax )
+    newMax = max( nMin, nMax )
+    if not newMin == nMin :
+        reverseOutput = True
+
+    portion = (x-oldMin)*(newMax-newMin)/(oldMax-oldMin)
+    if reverseInput:
+        portion = (oldMax-x)*(newMax-newMin)/(oldMax-oldMin)
+
+    result = portion + newMin
+    if reverseOutput:
+        result = newMax - portion
+
+    print result
+
+run = True
+while run:
+    x = int(raw_input("Enter a value: "))
+    remap(x, -90, 90, 75, 225)
+
+"""#test cases
+print remap( 25.0, 0.0, 100.0, 1.0, -1.0 ), "==", 0.5
+print remap( 25.0, 100.0, -100.0, -1.0, 1.0 ), "==", -0.25
+print remap( -125.0, -100.0, -200.0, 1.0, -1.0 ), "==", 0.5
+print remap( -125.0, -200.0, -100.0, -1.0, 1.0 ), "==", 0.5
+#even when value is out of bound
+print remap( -20.0, 0.0, 100.0, 0.0, 1.0 ), "==", -0.2"""

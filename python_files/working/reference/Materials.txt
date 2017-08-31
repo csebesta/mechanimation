@@ -1,0 +1,19 @@
+Circuit:
+8 pin IC socket
+Proto Board (3.4" x 2.2")
+Red LED
+Yellow LEDs
+Servos
+Headers
+Button
+
+Physical:
+Wood Base
+Aluminum (5052)
+Fasteners
+Standoffs
+
+import os
+os.system('cls' if os.name == 'nt' else 'clear')
+
+A if C else B is preferred over (A, B)[C], especially if A and B include function calls, since only one case is evaluated (also, there's no unnecessary temporary tuple/list building)
